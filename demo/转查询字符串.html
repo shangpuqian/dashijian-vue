@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+var obj = {name: "abc",a: 1,b: 2,c: 300,d: 100};
+
+var res;//定义了一个空数组
+
+var arr = Object.keys(obj);
+
+console.log(arr);
+
+res = arr.map(function(item) {
+
+// 这里为什么能够使用obj[item],遍历的arr数组中又没有obj[item]
+
+ //因为map不改变原来的数组，obj没变，obj对象是全局的依然可以使用。 obj[a] 获取的是属性值
+ console.log("1", item)
+
+return item + '=' + obj[item];
+
+})
+
+console.log(res); //["name=abc", "a=1", "b=2", "c=300", "d=100"]
+
+res = res.join('&');
+
+console.log(res);//"name=abc&a=1&b=2&c=300&d=100"
+
+// 封装函数
+
+function queryString(obj) {
+  return Object.keys(obj).map(function(item) {
+    return item + '=' + obj[item]
+  }).join('&')
+}
+  </script>
+</body>
+</html>

@@ -20,6 +20,8 @@
 </template>
 
 <script>
+import { _login } from '@/api/login.js'
+import queryString from '@/utils/queryString.js'
 export default {
   name: 'onlogin',
   data () {
@@ -47,7 +49,9 @@ export default {
     login () {
       this.$refs.form.validate((valid) => {
         if (valid) {
-          alert('submit!')
+          _login(queryString(this.form)).then(res => {
+            console.log(res)
+          })
         } else {
           console.log('error submit!!')
           return false
