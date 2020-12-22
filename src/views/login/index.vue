@@ -10,6 +10,7 @@
             <img src="@/assets/login_title.png" alt="">
           </div>
           <!-- 登录 -->
+          <!-- 通过 v-model 项 子组件 传递信息 -->
             <on-login v-if="jump" v-model="jump"></on-login>
           <!-- 注册 -->
             <signIn v-if="!jump" v-model="jump"></signIn>
